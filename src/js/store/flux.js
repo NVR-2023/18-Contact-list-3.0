@@ -27,7 +27,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					"address": "none",
 					"phone": "999999999"
 				}
-
 				try {
 					const response = await fetch("https://assets.breatheco.de/apis/fake/contact/", {
 						method: "POST",
@@ -47,7 +46,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			fetchAgenda: async () => {
 				try {
-					const response = await fetch("https://assets.breatheco.de/apis/fake/contact/" + getStore().agendaSlug);
+					const response = await fetch("https://assets.breatheco.de/apis/fake/contact/agenda/" + getStore().agendaSlug);
 					const data = await response.json();
 					setStore({ contactList: data });
 					return null;
@@ -58,25 +57,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			initializeAgenda: async () => {
 				try {
-					let response = await getActions().fetchAgenda();
-
-					if (response && response.length > 0) {
-						getActions().alertUser("agenda initialized", "green");
-						return null;
-					}
-
-					response = await getActions().createAgenda();
-					if (response) {
-						getActions().alertUser("agenda initialized", "green");
-						return null;
-					}
-
-					throw new Error("Failed to initialize agenda");
+					await getActions().fetchAgenda();
+					getActions().alertUser("agenda fetched", "green");
 				} catch (error) {
-					getActions().alertUser("failed to initialize agenda", "red");
-					return error;
+					const createAgendaResponse = await getActions().createAgenda();
+					if (createAgendaResponse) {
+						await getActions().fetchAgenda();
+						getActions().alertUser("agenda created and fetched", "green");
+					} else {
+						getActions().alertUser("failed to initialize agenda", "red");
+					}
 				}
-			}
+			},
+
 
 
 

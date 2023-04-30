@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Context } from "../store/appContext";
 import "../../styles/home.css";
 
-export const Home = () => (
-	<div className="container-fluid">
-		
+export const Home = () => {
+  const { store, actions } = useContext(Context);
 
-	</div>
-);
+  return (
+    <div className="container-fluid">
+      <div className="row">
+		<div className="col-sm-1 col-md-4">
+
+		</div>
+	  </div>
+    </div>
+  );
+};
