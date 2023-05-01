@@ -60,8 +60,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					await getActions().fetchAgenda();
 					getActions().alertUser("agenda fetched", "green");
 				} catch (error) {
-					const createAgendaResponse = await getActions().createAgenda();
-					if (createAgendaResponse) {
+					const response = await getActions().createAgenda();
+					if (response) {
 						await getActions().fetchAgenda();
 						getActions().alertUser("agenda created and fetched", "green");
 					} else {
