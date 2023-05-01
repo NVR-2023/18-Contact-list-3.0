@@ -6,12 +6,53 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+ul {
+
+    list-style: none;
+}
+
+.contactCard {
+    background: rgb(218, 234, 218);
+    border: none;
+    width: 12rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cardSection {
+    display: flex;
+    justify-content: left;
+    flex-direction: row;
+    font-size: .7rem;
+}
+
+.cardLabels {
+    display: flex;
+    flex-direction: column;
+    font-variant: small-caps;
+    justify-content: flex-end;
+    text-align: right;
+    margin-right: .3rem;
+}
+
+.cardInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: left;
+}
+
+
+
+
+
+
 .alertToUser {
     position: fixed;
     top: 50%;
     left: 50%;
     height: 2rem;
-    width:10.25rem;
+    width: 10.25rem;
     border: none;
     border-radius: .25rem;
     padding: .9rem;
@@ -31,12 +72,15 @@ body {
     0% {
         transform: translate(-50%, -50%) scale(0);
     }
+
     10% {
         transform: translate(-50%, -50%) scale(1);
     }
+
     90% {
         transform: translate(-50%, -50%) scale(1);
     }
+
     100% {
         transform: translate(-50%, -50%) scale(0);
     }
@@ -44,16 +88,10 @@ body {
 
 .addContactIcon {
     color: green;
+    transition: transform 0.3s ease;
+    transform-origin: 0% 0%;
 }
-  
 
-  
-  
-  
-  
-  
-  
-  
-  
-  
-
+.addContactIcon:hover {
+    transform: scale(1.1);
+}
