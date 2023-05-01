@@ -13,17 +13,16 @@ ul {
     background: rgb(218, 234, 218);
     border: none;
     width: 8.2rem;
+    height: 13.3rem;
 }
 
 .cardHeader {
     display: flex;
-    justify-content: center;
-    align-items: center;
     background: darkgrey;
     flex-direction: column;
-    padding: 0;
     margin: 0;
-    
+    padding: 0;
+    padding-bottom: .7rem;
 }
 
 .iconContainer {
@@ -33,11 +32,17 @@ ul {
 
 .editIcon {
     margin-right: auto;
+    padding-left: .3rem;
 }
 
 .deleteIcon {
     margin-left: auto;
+    padding-right: .3rem;
+}
 
+.imageWrapper {
+    display: flex;
+    justify-content: center;
 }
 
 .imageContainer {
@@ -46,7 +51,7 @@ ul {
     border-radius: 50%;
     overflow: hidden;
     position: relative;
-    margin-block: .7rem;
+    margin-block: .3rem;
 }
 
 .imageContainer img {
@@ -54,6 +59,22 @@ ul {
     height: 100%;
     object-fit: cover;
 }
+
+
+img {
+    transition: filter 0.5s ease-in-out;
+}
+
+
+img:hover {
+    filter: brightness(1.5);
+}
+
+img:not(:hover) {
+    filter: brightness(1);
+}
+
+
 
 .imageLabel {
     position: absolute;
@@ -76,6 +97,8 @@ ul {
     padding-left: .5rem;
     flex-direction: row;
     font-size: 0.5rem;
+    padding: .7rem;
+    align-items: center;
 }
 
 .cardLabels {
@@ -147,4 +170,16 @@ ul {
 
 .addContactIcon:hover {
     transform: scale(1.1);
+    filter: brightness(1.5);
+}
+
+.editIcon:hover {
+    transform: scale(1.2);
+    transition: all 0.3s ease-in-out;
+}
+
+.deleteIcon:hover {
+    color: red;
+    transform: scale(1.2);
+    transition: all 0.3s ease-in-out;
 }
