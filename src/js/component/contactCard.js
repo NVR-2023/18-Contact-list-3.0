@@ -2,15 +2,31 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 
-const ContactCard = ({ index, photo: image, full_name, address, phone, email }) => {
+const ContactCard = ({ index, avatarImage, fullName, email, phone, address }) => {
     const { store, actions } = useContext(Context);
 
-    let imageLabel = "";
-    if (!image) {
-        image = "https://dummyimage.com/200x200/28a745/fff.png&text=+";
-        imageLabel = "add photo";
-    }
+    //Auxiliary function generates initals from full_name
+    const getInitials = (fullName) => {
+        const words = fullName.trim().split(" ");
+        let initials = words[0][0].toUpperCase();
+        initials += words.length > 1 ? words[1][0].toUpperCase() : "";
+        return initials;
+    };
 
+    // Initializes avatar and contact info
+    let avatarInitials = "";
+    let avatarCircleColor = "";
+    let avatarInitialsColor = "";
+    if (!avatarImage) {
+        avatarInitials = getInitials(fullName);
+        avatarCircleColor = `hsl(${(index % 50) * 7.2}, 50%, 50%)`;
+        avatarInitialsColor = `hsl(${(index % 50) * 7.2 + 180}, 50%, 50%)`;
+    }
+    email = (email) ? email : "add email";
+    phone = (phone) ? phone : "add phone";
+    address = (address) ? address : "add address";
+
+    // Main JSX code
     return (
         <div className="contactCard-wrapper">
             <div className="card contactCard">
@@ -29,12 +45,16 @@ const ContactCard = ({ index, photo: image, full_name, address, phone, email }) 
                             </svg>
                         </span>
                     </div>
-                    <div className="imageWrapper">
-                        <div className="imageContainer">
-                            <img src={image} alt="" />
-                            {imageLabel && <div className="imageLabel">{imageLabel}</div>}
+                    <div className="avatarOuterContainer">
+                        <div className="avatarInnerContainer" style={{ backgroundColor: avatarCircleColor }}>
+                            {avatarImage ? (
+                                <img src={avatarImage} alt="avatar" />
+                            ) : (
+                                <div className="avatarInitials" style={{ color: avatarInitialsColor }}>{avatarInitials}</div>
+                            )}
                         </div>
                     </div>
+
                 </div>
                 <div className="card-body cardSection">
                     <div className="cardLabels">
@@ -44,7 +64,7 @@ const ContactCard = ({ index, photo: image, full_name, address, phone, email }) 
                         <label>address:</label>
                     </div>
                     <div className="cardInfo">
-                        <div className="nameLabel">{full_name}</div>
+                        <div className="nameLabel">{fullName}</div>
                         <div>{email}</div>
                         <div>{phone}</div>
                         <div>{address}</div>
