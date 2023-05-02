@@ -56,7 +56,7 @@ const ContactCard = ({ index, avatarImage, fullName, email, phone, address }) =>
                     </div>
 
                 </div>
-                <div className="card-body cardSection">
+                <div className="card-body cardBody">
                     <div className="cardLabels">
                         <label>name:</label>
                         <label>email:</label>

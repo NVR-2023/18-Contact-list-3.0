@@ -33,24 +33,25 @@ ul {
 .editIcon {
     margin-right: auto;
     padding-left: .3rem;
-}
-
-.editIcon:hover {
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .editIcon:hover {
     color: blue;
     transform: scale(1.2);
-    transition: all 0.3s ease-in-out;
-}
-
-.deleteIcon {
+  }
+  
+  .deleteIcon {
     margin-left: auto;
     padding-right: .3rem;
-}
-
-.deleteIcon:hover {
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .deleteIcon:hover {
     color: red;
     transform: scale(1.2);
-    transition: all 0.3s ease-in-out;
-}
+  }
+  
 
 .avatarOuterContainer {
     display: flex;
@@ -63,28 +64,49 @@ ul {
     border-radius: 50%;
     overflow: hidden;
     position: relative;
-    margin-block: .3rem;
-}
-
-.avatarInnerContainer img {
+    margin-block: 0.3rem;
+  }
+  
+  .avatarInnerContainer img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
-
-img {
     transition: filter 0.5s ease-in-out;
-}
-
-img:hover {
-    filter: brightness(1.5);
-}
-
-img:not(:hover) {
-    filter: brightness(1);
-}
-
-.avatarInitials {
+  }
+  
+  .avatarInnerContainer:after {
+    content: "edit image";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: .7rem;
+    font-variant: small-caps;
+    font-style: italic;
+    color: white;
+    background-color: rgba(88, 88, 88, 0.5);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .avatarInnerContainer:hover img {
+    filter: brightness(0.5) grayscale(1);
+  }
+  
+  .avatarInnerContainer:hover .avatarInitials {
+    opacity: 0;
+  }
+  
+  .avatarInnerContainer:hover:after {
+    opacity: 1;
+  }
+  
+  .avatarInitials {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -92,13 +114,15 @@ img:not(:hover) {
     font-size: 1.8rem;
     font-variant: small-caps;
     font-style: bold;
-}
+    transition: opacity 0.5s ease-in-out;
+  }
+  
 
 .nameLabel {
     font-weight: bold;
 }
 
-.cardSection {
+.cardBody {
     display: flex;
     justify-content: left;
     align-items: center;
