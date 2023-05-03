@@ -5,6 +5,42 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+.addContactButtonBar {
+    display: flex;
+    justify-content: left;
+}
+
+
+.addContactButton {
+    width: 3.125rem;
+    height: 3.125rem;
+    border-radius: 50%;
+    border: none;
+    background-color: green;
+    font-size: 2rem;
+    transform-origin: 0% 0
+}
+
+
+.addContactButton:hover::after {
+    content: "add contact";
+    font-variant: small-caps;
+    font-size: .36rem;
+    font-style: italic;
+    background-color: green;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
 ul {
     list-style: none;
 }
@@ -33,23 +69,19 @@ ul {
 .editIcon {
     margin-right: auto;
     padding-left: .3rem;
-    transition: all 0.3s ease-in-out;
 }
 
 .editIcon:hover {
     color: darkblue;
-    transform: scale(1.2);
 }
 
 .deleteIcon {
     margin-left: auto;
     padding-right: .3rem;
-    transition: all 0.3s ease-in-out;
 }
 
 .deleteIcon:hover {
     color: red;
-    transform: scale(1.2);
 }
 
 
@@ -75,7 +107,7 @@ ul {
 }
 
 .avatarInnerContainer:after {
-    content: "add image";
+    content: "edit image";
     display: flex;
     justify-content: center;
     align-items: center;
@@ -87,7 +119,6 @@ ul {
     font-size: .7rem;
     font-variant: small-caps;
     font-style: italic;
-    color: white;
     background-color: green;
     border-radius: 50%;
     opacity: 0;
@@ -186,39 +217,12 @@ ul {
     }
 }
 
-.addContactIconBar {
-    display: flex;
-    justify-content: left;
-}
 
-.addContactIcon {
-    position: relative;
-    color: green;
-    transition: transform 0.3s ease;
-    transform-origin: 0% 0%;
+.clickable {
+    transition: transform 0.2s ease-in-out;
   }
   
-  .addContactIcon:hover::after {
-    content: "add contact";
-    font-variant: small-caps;
-    font-size: .3rem;
-    font-style: italic;
-    background-color: green;
-    color: white;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    width: 1.5rem;
-    height: 1.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-   
-  }
-  
-  .addContactIcon:hover {
+  .clickable:hover {
     transform: scale(1.1);
+    cursor: pointer;
   }
-  
