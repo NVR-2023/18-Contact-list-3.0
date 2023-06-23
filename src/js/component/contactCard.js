@@ -56,18 +56,18 @@ const ContactCard = ({ index, avatarImage, fullName, email, phone, address }) =>
                     </div>
 
                 </div>
-                <div className="card-body cardBody">
+                <div className="cardBody">
                     <div className="cardLabels">
-                        <label>name:</label>
-                        <label>email:</label>
-                        <label>phone:</label>
-                        <label>address:</label>
+                        <div>name:</div>
+                        <div>email:</div>
+                        <div>phone:</div>
+                        <div>address:</div>
                     </div>
                     <div className="cardInfo">
-                        <div className="nameLabel clickable">{fullName}</div>
-                        <div className="clickable">{email}</div>
-                        <div className="clickable">{phone}</div>
-                        <div className="clickable">{address}</div>
+                        <div className="">{fullName}</div>
+                        <div className="">{email}</div>
+                        <div className="">{phone}</div>
+                        <div className="">{address}</div>
                     </div>
                 </div>
             </div>
